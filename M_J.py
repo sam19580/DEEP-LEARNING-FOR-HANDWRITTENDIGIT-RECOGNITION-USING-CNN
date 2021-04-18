@@ -24,7 +24,7 @@ from keras.layers import Conv2D
 from keras.layers import MaxPooling2D
 from keras.layers import Dense
 from keras.layers import Flatten
-from keras.optimizers import SGD
+from keras.optimizers import Adagrad
 # load train and test dataset
 def load_dataset():
 	# load dataset
@@ -80,7 +80,7 @@ def define_model():
 	model.add(Dense(100, activation='relu', kernel_initializer='he_uniform'))
 	model.add(Dense(10, activation='softmax'))
 	# compile model
-	opt = SGD(lr=0.01, momentum=0.9)
+	opt = Adagrad(lr=0.01, momentum=0.9)
 	model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
     
 	return model
